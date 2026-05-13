@@ -1,0 +1,29 @@
+{
+  "name": "pathprune",
+  "version": "0.1.0",
+  "purpose": "Preview ignore-aware cleanup candidates without deleting files.",
+  "commands": {
+    "checkText": "pathprune check <root> --format text",
+    "checkJson": "pathprune check <root> --format json",
+    "init": "pathprune init <root>",
+    "explain": "pathprune explain"
+  },
+  "exitCodes": {
+    "0": "No warning-level findings exceed policy.",
+    "1": "Warning-level findings exceed policy.",
+    "2": "Invalid input, config, or CLI usage."
+  },
+  "safety": {
+    "destructive": false,
+    "telemetry": false,
+    "network": false,
+    "safeToRemoveDefault": false
+  },
+  "verification": [
+    "npm test",
+    "npm run check",
+    "npm run build",
+    "npm run smoke",
+    "bash scripts/validate.sh"
+  ]
+}
