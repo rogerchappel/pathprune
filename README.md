@@ -1,50 +1,111 @@
-# pathprune
+# PathPrune 🌿
 
-Ignore-aware dead-file and duplicate-path scout with safe cleanup previews.
+PathPrune is a local-first TypeScript CLI that scouts for repo cleanup candidates without deleting anything.
 
-## Status
+It is intentionally conservative: it honors ignore rules, scans only the directory you name, produces deterministic output, and leaves every cleanup decision to a human or reviewing agent.
 
-This repository is early-stage. Confirm the current support, release, and
-security posture before using it in production.
+## What it finds
+
+- **Duplicate paths** — repeated names such as `README.md` or docs pages that often drift apart.
+- **Dead-file candidates** — obvious backup cruft like `*.bak`, `*.old`, `*.orig`, `*~`, and OS artifacts.
+- **Generated-file candidates** — files like `dist/**`, `coverage/**`, and `*.log` that may belong in ignore rules.
+- **Large-file candidates** — tracked blobs that deserve a quick sanity check.
+
+PathPrune never deletes, rewrites, stages, uploads, or phones home.
 
 ## Install
 
-Replace this section with the generated repository's installation steps.
-
 ```sh
-pnpm install
+npm install -g pathprune
 ```
 
-## Use
-
-Replace this section with the smallest useful example for the generated
-repository.
+For local development:
 
 ```sh
-pnpm dev
+git clone https://github.com/rogerchappel/pathprune.git
+cd pathprune
+npm install
+npm run build
 ```
+
+## CLI
+
+```sh
+pathprune --help
+pathprune init ./demo
+pathprune check ./demo --format text
+pathprune check ./demo --format json
+pathprune explain
+```
+
+`check` exits with:
+
+- `0` when no warning-level findings exceed policy.
+- `1` when warning-level findings exceed policy.
+- `2` for invalid input, config, or CLI usage.
+
+Use `--max-findings <n>` to allow a small number of warning findings before exit `1`.
+
+## Example
+
+```sh
+npm run build
+node bin/pathprune.js check fixtures/duplicate-docs --format text
+```
+
+Example output excerpt:
+
+```text
+PathPrune cleanup preview
+Safety: preview only; no files were changed.
+1. [warning] duplicate-path: README.md
+   Recommendation: Compare content and references before consolidating. PathPrune never deletes for you.
+```
+
+## Configuration
+
+Create a starter config:
+
+```sh
+pathprune init .
+```
+
+This writes `.pathprunerc.json` if one does not already exist. Supported keys mirror the default config:
+
+```json
+{
+  "duplicatePathGlobs": ["README*", "docs/**/*.md"],
+  "deadFileGlobs": ["**/*.bak", "**/*.old"],
+  "ignoredCandidateGlobs": ["dist/**", "*.log"],
+  "largeFileBytes": 1048576,
+  "maxFindings": 0
+}
+```
+
+## Safety guarantees
+
+- Reads only the requested root.
+- Skips `.git/` and `node_modules/` by default.
+- Applies simple `.gitignore` rules.
+- Produces stable ordering for repeatable agent handoffs.
+- Marks every v1 finding as `safeToRemove: false`.
+- Does not include telemetry, network calls, or destructive commands.
+
+See [docs/SAFETY.md](docs/SAFETY.md) for the fuller safety model.
 
 ## Verify
 
-Run the local validation script before opening a pull request:
-
 ```sh
+npm test
+npm run check
+npm run build
+npm run smoke
 bash scripts/validate.sh
 ```
 
-`scripts/validate.sh` runs the repository's standard local checks when they are defined and will also run `agent-qc ready` when `agent-qc` is installed. Missing `agent-qc` is treated as a skip, not a failure.
-
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution expectations. Changes
-should be small, reviewable, and verified before review.
-
-## Security
-
-See [SECURITY.md](SECURITY.md) for vulnerability reporting guidance. Replace
-the default security policy before publishing the generated repository.
-
-These links assume this README has been copied to the generated repository root.
+See [CONTRIBUTING.md](CONTRIBUTING.md). Small, reviewable PRs with fixture-backed tests are very welcome.
 
 ## License
 
