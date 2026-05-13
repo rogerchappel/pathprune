@@ -2,57 +2,32 @@
 
 ## Supported Versions
 
-Replace this section with the supported versions for `pathprune`.
+PathPrune has not published a stable release yet. Until v1.0.0, security fixes target the latest `main` branch and the newest published package version when one exists.
 
-Example:
-
-```md
 | Version | Supported |
 | --- | --- |
-| .x | Yes |
-| < .0 | No |
-```
-
-If the project does not publish versioned releases yet, say that clearly.
+| 0.x | Best effort |
 
 ## Reporting a Vulnerability
 
-Please do not report suspected vulnerabilities in public issues, pull requests, or discussions.
+Please do not include exploit details, secrets, or sensitive repository contents in public issues.
 
-Ask maintainers for the private security reporting path before sharing details.
-
-If no private reporting path exists yet, ask maintainers through public project channels for a private reporting path. Do not include exploit details, secrets, personal data, or sensitive technical details in public messages.
-
-## What to Include
-
-When a private reporting path is available, include:
-
-- A clear description of the issue.
-- Affected versions, files, packages, workflows, or configuration.
-- Steps to reproduce, proof of concept, or attack scenario when safe to share.
-- Potential impact.
-- Suggested mitigation, if known.
-
-## Response Expectations
-
-Maintainers review good-faith reports as capacity allows.
-
-Do not imply paid support, guaranteed response times, guaranteed fixes, or service-level agreements unless `pathprune` explicitly provides them.
+If GitHub private vulnerability reporting is enabled, use it. Otherwise, open a minimal public issue asking for a private reporting path and omit sensitive details.
 
 ## Scope
 
 In scope:
 
-- Vulnerabilities in pathprune.
-- Insecure default configuration shipped by this project.
-- CI, release, or dependency guidance maintained by this project.
+- Path traversal or reads outside the requested scan root.
+- Unexpected writes, deletes, staging, network calls, or telemetry.
+- Dependency or release-process vulnerabilities in this repository.
 
 Out of scope:
 
-- General support requests.
-- Requests for guaranteed maintenance timelines.
-- Issues in unrelated downstream projects.
+- General cleanup advice.
+- Bugs in downstream projects scanned with PathPrune.
+- Requests for guaranteed response timelines.
 
-## Disclosure
+## Project Safety Posture
 
-Coordinate disclosure with maintainers before publishing vulnerability details.
+PathPrune is designed to be non-destructive: it scans local files, prints dry-run reports, and never deletes files. Please report any behavior that violates that boundary.
