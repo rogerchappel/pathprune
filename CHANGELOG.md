@@ -1,21 +1,22 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to PathPrune will be documented in this file.
 
-This project follows the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
-format and uses semantic versioning when versioned releases are published.
+This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and semantic versioning when versioned releases are published.
 
 ## [Unreleased]
 
 ### Added
 
-- Initial project setup.
+- TypeScript CLI with `check`, `run`, `init`, and `explain` commands.
+- Deterministic text and JSON cleanup preview reports.
+- Ignore-aware file walking with built-in `.git/` and `node_modules/` skips.
+- Duplicate-path, dead-file, generated-file, and large-file candidate detection.
+- Fixture-backed tests and smoke checks.
+- Safety, orchestration, and contribution documentation.
 
-## Release Links
+### Security
 
-- Unreleased:
-  `https://github.com/rogerchappel/pathprune/compare/...HEAD`
-- Latest release:
-  `https://github.com/rogerchappel/pathprune/releases/latest`
+- Non-destructive v1 safety model: no delete, move, rewrite, staging, telemetry, or network behavior.
 
-Replace placeholder links once the first release tag exists.
+[Unreleased]: https://github.com/rogerchappel/pathprune/compare/HEAD...HEAD
