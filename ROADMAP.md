@@ -1,38 +1,27 @@
 # Roadmap
 
-This roadmap describes intended direction, not a binding delivery promise.
-Review it regularly and update it as the project learns from users,
-contributors, and implementation constraints.
-
 ## Now
 
-- Define the smallest useful project scope.
-- Keep repository setup, documentation, and verification easy for contributors
-  to follow.
-- Ship small, reviewable improvements.
+- Keep v0.1 focused on deterministic local cleanup previews.
+- Harden fixture-backed tests around ignore handling and duplicate docs.
+- Gather real-world examples from small OSS repositories.
 
 ## Next
 
-- Add the next capabilities that directly support the project's primary users.
-- Improve tests, docs, and examples around the most used workflows.
-- Reduce setup friction discovered during early use.
+- Optional content hashing to identify exact duplicate files.
+- Markdown report output for PR comments and agent handoffs.
+- More `.gitignore` compatibility where it can remain conservative and deterministic.
+- Config presets for docs-heavy repos, CLIs, and generated-site projects.
 
 ## Later
 
-- Consider larger features after the core workflow is stable.
-- Add automation only where it removes repeated maintainer work.
-- Revisit packaging, deployment, or integration options based on real demand.
+- SARIF output for advisory CI annotations.
+- Workspace-level multi-package summaries.
+- Baseline files so teams can ratchet cleanup findings down over time.
 
 ## Not Planned
 
-- Unrelated platform rewrites without a clear migration path.
-- Mandatory dependencies on a single ecosystem unless the project requires it.
-- Public release dates before maintainers are ready to commit to them.
-
-## Roadmap Review
-
-Before each major or meaningful minor release:
-
-- Move completed user-visible work into `CHANGELOG.md`.
-- Remove stale commitments.
-- Promote only the next reviewable set of work into `Now`.
+- Automatic deletion or mutation.
+- Telemetry.
+- Hosted dashboards.
+- LLM-dependent classification.
