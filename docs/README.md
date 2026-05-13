@@ -1,13 +1,9 @@
-# pathprune Documentation
+# PathPrune Documentation
 
-This directory holds project documentation.
+- [PRD](PRD.md) — product requirements and scope.
+- [Tasks](TASKS.md) — completed and next work.
+- [Safety model](SAFETY.md) — non-destructive guarantees and review checklist.
+- [Orchestration notes](ORCHESTRATION.md) — how agents and CI should use PathPrune.
+- [orchestration.json](orchestration.json) — machine-readable command and policy metadata.
 
-## Contents
-
-- [Contributing guide](../CONTRIBUTING.md)
-- [Security policy](../SECURITY.md)
-- [Agent instructions](../AGENTS.md)
-
-## Additional docs
-
-For a hosted documentation site, see the `docs-site/` directory if present.
+PathPrune's docs are intentionally practical: if a cleanup tool cannot explain itself clearly, it should not be trusted with your repo hygiene.
