@@ -6,9 +6,9 @@
   "bin": {
     "pathprune": "./bin/pathprune.js"
   },
-  "main": "./dist/index.js",
+  "main": "./dist/src/index.js",
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./dist/src/index.js"
   },
   "files": [
     "bin",
