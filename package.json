@@ -22,7 +22,7 @@
     "test": "node --test dist/**/*.test.js",
     "pretest": "npm run build",
     "smoke": "npm run build && node bin/pathprune.js check fixtures/duplicate-docs --format text --max-findings 10 && node bin/pathprune.js check fixtures/duplicate-docs --format json --max-findings 10 >/tmp/pathprune-smoke.json",
-    "package:smoke": "npm pack --dry-run",
+    "package:smoke": "bash scripts/package-smoke.sh",
     "release:check": "npm test && npm run check && npm run build && npm run smoke && npm run package:smoke"
   },
   "keywords": [
