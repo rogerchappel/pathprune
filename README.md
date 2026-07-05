@@ -62,6 +62,16 @@ Safety: preview only; no files were changed.
    Recommendation: Compare content and references before consolidating. PathPrune never deletes for you.
 ```
 
+For a fuller disposable walkthrough, run:
+
+```sh
+bash demo/run-cleanup-triage.sh
+```
+
+See [docs/tutorials/cleanup-triage.md](docs/tutorials/cleanup-triage.md) for the
+review flow and [docs/promo/cleanup-triage-video-brief.md](docs/promo/cleanup-triage-video-brief.md)
+for a short video brief grounded in the demo.
+
 ## Configuration
 
 Create a starter config:
